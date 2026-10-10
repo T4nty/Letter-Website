@@ -6,7 +6,7 @@
 <title>For Katrina</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,6 +18,15 @@
     --paper: #fdf6e8;
     --paper-edge: #e8d6b8;
     --gold: #c99a4a;
+
+    /* Notebook ruling */
+    --rule-line-height: 1.9;
+    --rule-color: rgba(180, 140, 90, 0.22);
+
+    /* Font stacks */
+    --font-hand: 'Caveat', 'Segoe Script', cursive;
+    --font-script: 'Parisienne', 'Dancing Script', cursive;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
   }
 
   html, body {
@@ -26,7 +35,7 @@
   }
 
   body {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: var(--font-hand);
     background:
       radial-gradient(circle at 20% 10%, #ffe6f0 0%, transparent 45%),
       radial-gradient(circle at 80% 90%, #ffe0ec 0%, transparent 45%),
@@ -65,11 +74,11 @@
   }
 
   .hint {
-    font-family: 'Dancing Script', cursive;
-    font-size: 22px;
+    font-family: var(--font-script);
+    font-size: 30px;
     color: var(--pink);
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+    margin-bottom: 26px;
     text-align: center;
     animation: pulse 2s ease-in-out infinite;
     transition: opacity 0.4s ease;
@@ -99,7 +108,6 @@
   }
   .envelope:hover { transform: translateY(-8px) scale(1.04); }
 
-  /* ---- BACK of the envelope (soft pink) ---- */
   .env-back {
     position: absolute;
     inset: 0;
@@ -148,10 +156,11 @@
   .extract-letter .flowers-mini { display: flex; gap: 4px; align-items: flex-end; }
   .extract-letter .flowers-mini svg { width: 26px; height: 26px; }
   .extract-letter .mini {
-    font-family: 'Dancing Script', cursive;
-    font-size: 18px;
+    font-family: var(--font-hand);
+    font-weight: 500;
+    font-size: 22px;
     color: var(--ink);
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .extract-letter .mini-stamp {
     position: absolute;
@@ -168,7 +177,6 @@
   }
   .extract-letter .mini-stamp svg { width: 18px; height: 18px; fill: #d6336c; }
 
-  /* ---- FRONT of the envelope ---- */
   .env-front {
     position: absolute;
     inset: 0;
@@ -205,7 +213,6 @@
     pointer-events: none;
   }
 
-  /* ---- CUTE FLAP ---- */
   .env-flap {
     position: absolute;
     top: 0; left: 0;
@@ -282,7 +289,6 @@
     z-index: -1;
   }
 
-  /* ---- Wax seal ---- */
   .seal {
     position: absolute;
     top: 105px;
@@ -323,7 +329,6 @@
      OPEN STATE — three-phase animation
      ============================================================ */
 
-  /* Phase 1 — flap opens, seal disappears */
   .envelope.open .env-flap {
     transform: rotateX(180deg);
     z-index: 0;
@@ -339,7 +344,6 @@
     transition: transform 0.6s ease;
   }
 
-  /* Phase 2 — letter rises above the envelope */
   .envelope.open .extract-letter {
     transform: translateY(-180px);
     transition:
@@ -352,7 +356,6 @@
       box-shadow 0.7s ease 1.3s;
   }
 
-  /* Phase 3 — the letter expands into a giant sheet */
   .envelope.expanding .extract-letter {
     width: 100vw;
     height: 100vh;
@@ -400,7 +403,6 @@
     visibility: visible;
   }
 
-  /* ---- LEFT: PHOTO ---- */
   .col-photo {
     flex: 0 0 40%;
     max-width: 480px;
@@ -529,12 +531,13 @@
     justify-content: center;
     gap: 6px;
     margin-top: 14px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
+    font-family: var(--font-script);
+    font-size: 32px;
     color: var(--pink-deep);
     letter-spacing: 0.5px;
     position: relative;
     z-index: 1;
+    line-height: 1;
   }
   .photo-caption svg { width: 20px; height: 20px; }
 
@@ -545,9 +548,9 @@
     transform: translate(-50%, -50%) scale(0.9);
     background: rgba(255, 255, 255, 0.94);
     color: var(--pink);
-    font-family: 'Dancing Script', cursive;
-    font-size: 18px;
-    padding: 8px 18px;
+    font-family: var(--font-script);
+    font-size: 22px;
+    padding: 8px 20px;
     border-radius: 999px;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -605,14 +608,15 @@
   }
 
   h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 42px;
+    font-family: var(--font-script);
+    font-size: 64px;
     color: var(--pink);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 4px;
-    line-height: 1.1;
+    line-height: 1.05;
     flex-shrink: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .divider {
@@ -629,17 +633,35 @@
   }
   .divider svg { width: 16px; height: 16px; }
 
+  /* ============================================================
+     BODY TEXT — handwritten + notebook ruling
+     ============================================================ */
   .body-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18.5px;
-    line-height: 1.95;
+    font-family: var(--font-hand);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.2px;
+    line-height: var(--rule-line-height);
     color: var(--ink);
-    margin: 0 0 20px 0;
+    margin: 0 0 22px 0;
     padding: 0;
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
     flex-shrink: 0;
+
+    /* Notebook ruled lines */
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.9em - 1px),
+      var(--rule-color) calc(1.9em - 1px),
+      var(--rule-color) 1.9em
+    );
+    background-attachment: local;
+    background-repeat: repeat;
+    background-size: 100% 1.9em;
+    background-position: 0 0;
   }
 
   .caret::after {
@@ -656,10 +678,10 @@
   .signature {
     margin-top: 30px;
     text-align: right;
-    font-family: 'Dancing Script', cursive;
-    font-size: 26px;
+    font-family: var(--font-script);
+    font-size: 44px;
     color: var(--pink);
-    line-height: 1.5;
+    line-height: 1.3;
     opacity: 0;
     transition: opacity 1s ease;
     flex-shrink: 0;
@@ -669,22 +691,26 @@
   .signature .name-line {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .signature .name-line svg { width: 20px; height: 20px; }
+  .signature .name-line strong {
+    font-weight: 400;
+  }
+  .signature .name-line svg { width: 22px; height: 22px; }
 
   .ps {
     margin-top: 24px;
     padding-top: 18px;
     border-top: 1px dashed rgba(180, 130, 70, 0.5);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-style: italic;
-    font-size: 15px;
+    font-size: 17px;
     color: #a9825a;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease;
     flex-shrink: 0;
+    line-height: 1.5;
   }
   .ps.show { opacity: 1; }
 
@@ -709,7 +735,7 @@
     border-radius: 999px;
     background: linear-gradient(135deg, #e6a35c, #c97a30);
     color: #fff;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-size: 14px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -731,7 +757,7 @@
     border-radius: 999px;
     background: transparent;
     color: var(--pink);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-size: 14px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -756,8 +782,8 @@
     gap: 8px;
     width: 100%;
     margin-top: 0;
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
+    font-family: var(--font-script);
+    font-size: 34px;
     color: var(--pink);
     opacity: 0;
     max-height: 0;
@@ -767,7 +793,7 @@
     flex-shrink: 0;
     line-height: 1.3;
   }
-  .hidden-msg svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .hidden-msg svg { width: 24px; height: 24px; flex-shrink: 0; }
   .hidden-msg.show {
     opacity: 1;
     max-height: 80px;
@@ -881,7 +907,7 @@
     align-items: center;
     justify-content: center;
     transition: background 0.25s ease, transform 0.25s ease;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
   }
   .lightbox-close:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -896,8 +922,8 @@
     .photo-frame { max-width: 280px; }
     .photo-inner { padding: 13px; }
     .col-text { padding: 32px 30px 50px; }
-    h1 { font-size: 36px; }
-    .body-text { font-size: 17.5px; line-height: 1.9; }
+    h1 { font-size: 54px; }
+    .body-text { font-size: 21px; line-height: 1.9; }
   }
 
   @media (max-width: 700px) {
@@ -914,15 +940,15 @@
     .corner { width: 60px; height: 60px; }
     .photo-frame { max-width: 260px; }
     .photo-inner { padding: 12px; }
-    .photo-caption { font-size: 20px; margin-top: 12px; }
+    .photo-caption { font-size: 28px; margin-top: 12px; }
 
     .col-text { flex: 1 1 auto; padding: 26px 22px 50px; height: auto; }
-    h1 { font-size: 32px; }
-    .body-text { font-size: 17px; line-height: 1.85; margin-bottom: 18px; }
+    h1 { font-size: 46px; }
+    .body-text { font-size: 21px; line-height: 1.85; margin-bottom: 18px; }
     .bouquet svg { width: 34px; height: 34px; }
-    .signature { font-size: 23px; }
+    .signature { font-size: 38px; }
     .love-btn, .seal-btn { padding: 11px 24px; font-size: 13px; }
-    .hidden-msg { font-size: 22px; }
+    .hidden-msg { font-size: 30px; }
   }
 
   @media (max-width: 420px) {
@@ -932,19 +958,19 @@
     .env-rose { width: 60px; height: 60px; top: -16px; right: -12px; }
     .seal { top: 84px; width: 54px; height: 54px; }
     .seal svg { width: 26px; height: 26px; }
-    .hint { font-size: 18px; margin-bottom: 22px; }
+    .hint { font-size: 24px; margin-bottom: 22px; }
 
     .col-photo { padding: 18px 14px 14px; }
     .photo-frame { max-width: 220px; }
     .photo-inner { padding: 10px; }
-    .photo-caption { font-size: 18px; margin-top: 10px; }
+    .photo-caption { font-size: 26px; margin-top: 10px; }
 
     .col-text { padding: 22px 16px 40px; }
-    h1 { font-size: 28px; }
-    .body-text { font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+    h1 { font-size: 42px; }
+    .body-text { font-size: 20px; line-height: 1.8; margin-bottom: 16px; }
     .bouquet svg { width: 30px; height: 30px; }
-    .signature { font-size: 21px; }
-    .ps { font-size: 13.5px; }
+    .signature { font-size: 34px; }
+    .ps { font-size: 15px; }
 
     .action-row {
       flex-direction: column;
@@ -959,7 +985,7 @@
     }
 
     .hidden-msg {
-      font-size: 20px;
+      font-size: 28px;
       justify-content: center;
     }
   }
@@ -967,7 +993,7 @@
 </head>
 <body>
 
-  <!-- ============ BACKGROUND MUSIC (hidden, no toggle button) ============ -->
+  <!-- ============ BACKGROUND MUSIC ============ -->
   <audio id="bgMusic" loop preload="auto">
     <source src="bg-music/Lifehouse - You And Me - Solo Fingerstyle Guitar · With Tabs [z48cItPKlfM].mp3" type="audio/mpeg">
   </audio>
@@ -1128,16 +1154,16 @@
       <p class="body-text" data-text="Hi Katrina! I made this little appreciation letter for you."></p>
       <p class="body-text" data-text="I know you're on your period right now, so I hope this letter makes you smile a little. But you might just get annoyed by this letter instead lol."></p>
       <p class="body-text" data-text="Every time I look at our picture, I feel happy that I got to know you. Your smile and laugh always make me happy, so please don't hide your face because you're beautiful. And don't forget to bring my copy next time we meet! We should take more pictures together next time, lol."></p>
-      <p class="body-text" data-text="I know commuting every time we see each other isn't easy, especially since I don't have my own service to pick you up and drop you off at home. But I really appreciate the time and effort you give just to see me. It means a lot to me, and I'm really thankful for that."></p>
-      <p class="body-text" data-text="You helped me pray more. I used to pray, but not every day. Now, I pray every morning and before going to sleep because I also want to be closer to God. Thank you for that."></p>
+      <p class="body-text" data-text="Since I don't have my own vehicle to pick you up and drop you off at home, I know that commuting just to see each other isn't always easy. That's why I truly appreciate the time and effort you make just to be with me. I'm genuinely grateful for everything you do, and please know that it means so much to me."></p>
+      <p class="body-text" data-text="You've helped me pray more. I used to pray, but not every day. Now, I pray every morning and before going to sleep. It's become part of my daily routine because I also want to be closer to God. Thank you for that."></p>
       <p class="body-text" data-text="Remember our first movie bonding when you got scared and I laughed at you. I called it a date, but you said it was just bonding lol. That's one of my favorite memories. And the photobooth too! Our poses were epic, especially since we didn't practice and just freestyled everything. Honestly, I only wanted to try the photobooth because I wanted to hug you, and it worked lol."></p>
       <p class="body-text" data-text="I also remember the first time we watched a movie on Discord. You kept waking up just to continue watching it with me, lol. I really appreciated that you made time for me and stayed until we finished the movie, even though you were sleepy. The next day, you told me your eyes were already closing, and you kept asking if I was sleepy too so you could finally go to sleep. Haha, I really appreciated that little moment."></p>
-      <p class="body-text" data-text="I'm still wondering why you fed me at Xpresso lmao ikaw ha, dumadamoves ka diyan ah. Don't get me wrong, I loved it, really loved it. It made me feel like a kid again. Do it again next time, and I'll feed you too."></p>
-      <p class="body-text" data-text="At the arcade, I didn't realize you were good at basketball. I might actually lose to you, not gonna lie lol. I was hoping to win a stuffed toy for you at the claw machine, but maybe I'll have better luck next time. Anyway, I hope you enjoyed the time we spent together when we last met. It was short, but I really enjoyed it."></p>
-      <p class="body-text" data-text="I don't really know how to say these things when we call, so I made this little website letter instead. I just want you to know how much I appreciate you."></p>
+      <p class="body-text" data-text="I'm still wondering why you fed me at Xpresso ikaw ha, dumadamoves ka diyan ah. Don't get me wrong, I loved it, really loved it. It made me feel like a kid again. Do it again next time, and susubuan din kita lol."></p>
+      <p class="body-text" data-text="At the arcade, I didn't know you were good at basketball. I might actually lose to you, not gonna lie lol. I was hoping to win a stuffed toy for you at the claw machine, but maybe I'll have better luck next time. Anyway, I hope you enjoyed the time we spent together when we last met. It was short, but I really enjoyed it."></p>
       <p class="body-text" data-text="I'm sorry for the mistake I made. I'm still getting to know you better, learning what you like and don't like, and how to love you the right way. I'm still learning and trying to be better for you."></p>
       <p class="body-text" data-text="I love every little thing about you, and I hope we get to make more beautiful memories together in the future."></p>
-      <p class="body-text" data-text="My handwriting is ugly, so I made this instead. I hope you don't get tired of receiving these little websites from me, and I hope you like my letter."></p>
+            <p class="body-text" data-text="I don't really know how to say these things when we call, so I made this little website for you instead. I just want you to know how much I appreciate you."></p>
+      <p class="body-text" data-text="This isn't a traditional letter, but I hope you don't get tired of receiving these little websites from me. I hope you like this one."></p>
 
       <div class="signature" id="signature">
         With love,<br>
@@ -1193,13 +1219,12 @@
 
 
   /* =========================================================
-     2. BACKGROUND MUSIC — only plays while letter is open
+     2. BACKGROUND MUSIC
      ========================================================= */
   const bgMusic = document.getElementById('bgMusic');
   bgMusic.volume = 0.55;
 
   function startMusic() {
-    // Reset to the beginning every time so it always plays fresh
     bgMusic.currentTime = 0;
     bgMusic.play().catch(err => {
       console.warn('Music autoplay blocked:', err);
@@ -1213,7 +1238,7 @@
 
 
   /* =========================================================
-     3. ENVELOPE OPEN / CLOSE — with 3-phase extraction animation
+     3. ENVELOPE OPEN / CLOSE
      ========================================================= */
   const stage          = document.getElementById('stage');
   const envelope       = document.getElementById('envelope');
@@ -1227,24 +1252,19 @@
   let typewriterRunId = 0;
   let petalsInterval = null;
 
-  /* ---------- OPEN ---------- */
   envelope.addEventListener('click', () => {
     if (opened) return;
     opened = true;
 
-    // Start the music only when the envelope is tapped
     startMusic();
 
-    // Phase 1: Open the flap and pop the seal
     envelope.classList.add('open');
     hint.style.opacity = '0';
 
-    // Phase 3: After the letter has risen, expand it to fill the screen
     setTimeout(() => {
       envelope.classList.add('expanding');
     }, 1400);
 
-    // After the expansion completes, swap to the real letter
     setTimeout(() => {
       stage.style.opacity = '0';
       stage.style.visibility = 'hidden';
@@ -1257,13 +1277,11 @@
     }, 2300);
   });
 
-  /* ---------- SEAL BACK ---------- */
   sealBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (!opened) return;
     opened = false;
 
-    // Stop music completely and reset it to the start
     stopAndResetMusic();
 
     if (petalsInterval) {
@@ -1292,7 +1310,6 @@
 
       colText.scrollTop = 0;
 
-      // Reset all envelope animation classes so the sequence can replay
       envelope.classList.remove('open', 'expanding', 'gone');
 
       stage.style.opacity = '1';
