@@ -19,11 +19,9 @@
     --paper-edge: #e8d6b8;
     --gold: #c99a4a;
 
-    /* Notebook ruling */
     --rule-line-height: 1.9;
     --rule-color: rgba(180, 140, 90, 0.22);
 
-    /* Font stacks */
     --font-hand: 'Caveat', 'Segoe Script', cursive;
     --font-script: 'Parisienne', 'Dancing Script', cursive;
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -43,7 +41,6 @@
     position: relative;
   }
 
-  /* ---------- floating hearts ---------- */
   .heart {
     position: fixed;
     bottom: -60px;
@@ -59,9 +56,6 @@
     100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
   }
 
-  /* ============================================================
-     ENVELOPE STAGE
-     ============================================================ */
   .stage {
     position: fixed;
     inset: 0;
@@ -95,9 +89,6 @@
     align-items: center;
   }
 
-  /* ============================================================
-     CUTE ENVELOPE with rose on upper right
-     ============================================================ */
   .envelope {
     position: relative;
     width: 360px;
@@ -119,9 +110,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
-  /* ============================================================
-     THE EXTRACTABLE LETTER
-     ============================================================ */
   .extract-letter {
     position: absolute;
     left: 8%;
@@ -242,9 +230,6 @@
     pointer-events: none;
   }
 
-  /* ============================================================
-     ROSE DECORATION
-     ============================================================ */
   .env-rose {
     position: absolute;
     top: -22px;
@@ -325,10 +310,6 @@
   }
   .seal svg { width: 34px; height: 34px; }
 
-  /* ============================================================
-     OPEN STATE — three-phase animation
-     ============================================================ */
-
   .envelope.open .env-flap {
     transform: rotateX(180deg);
     z-index: 0;
@@ -381,9 +362,6 @@
     transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
   }
 
-  /* ============================================================
-     LETTER VIEWPORT
-     ============================================================ */
   .letter-viewport {
     position: fixed;
     inset: 0;
@@ -429,9 +407,6 @@
   .corner.tl { top: 8px; left: 8px; }
   .corner.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
 
-  /* ============================================================
-     AURORA GLOW PHOTO FRAME
-     ============================================================ */
   .photo-frame {
     width: 100%;
     max-width: 360px;
@@ -564,7 +539,6 @@
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* ---- RIGHT: TEXT ---- */
   .col-text {
     flex: 1 1 0;
     min-width: 0;
@@ -633,9 +607,6 @@
   }
   .divider svg { width: 16px; height: 16px; }
 
-  /* ============================================================
-     BODY TEXT — handwritten + notebook ruling
-     ============================================================ */
   .body-text {
     font-family: var(--font-hand);
     font-weight: 500;
@@ -650,7 +621,6 @@
     overflow-wrap: break-word;
     flex-shrink: 0;
 
-    /* Notebook ruled lines */
     background-image: repeating-linear-gradient(
       to bottom,
       transparent 0,
@@ -801,9 +771,6 @@
     transform: translateY(0);
   }
 
-  /* ============================================================
-     FALLING FLOWER PETALS
-     ============================================================ */
   .petal {
     position: fixed;
     top: -80px;
@@ -859,7 +826,6 @@
     70%      { margin-left: -10px; }
   }
 
-  /* ---------- lightbox ---------- */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -914,9 +880,6 @@
     transform: rotate(90deg);
   }
 
-  /* ============================================================
-     RESPONSIVE
-     ============================================================ */
   @media (max-width: 900px) {
     .col-photo { flex: 0 0 34%; padding: 20px; }
     .photo-frame { max-width: 280px; }
@@ -993,12 +956,10 @@
 </head>
 <body>
 
-  <!-- ============ BACKGROUND MUSIC ============ -->
   <audio id="bgMusic" loop preload="auto">
     <source src="bg-music/Lifehouse - You And Me - Solo Fingerstyle Guitar · With Tabs [z48cItPKlfM].mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ============ SVG SPRITE ============ -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="icon-heart" viewBox="0 0 32 32">
@@ -1068,7 +1029,6 @@
     </defs>
   </svg>
 
-  <!-- ============ ENVELOPE STAGE ============ -->
   <div class="stage" id="stage">
     <div class="envelope-wrap">
       <div class="hint" id="hint">Tap the envelope to open</div>
@@ -1109,10 +1069,8 @@
     </div>
   </div>
 
-  <!-- ============ LETTER VIEWPORT ============ -->
   <div class="letter-viewport" id="letterViewport">
 
-    <!-- LEFT: PHOTO -->
     <div class="col-photo">
       <svg class="corner tl" viewBox="0 0 120 120"><use href="#icon-vine"/></svg>
       <svg class="corner bl" viewBox="0 0 120 120"><use href="#icon-vine"/></svg>
@@ -1132,7 +1090,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: TEXT -->
     <div class="col-text" id="colText">
       <div class="bouquet">
         <svg><use href="#icon-tulip"/></svg>
@@ -1192,13 +1149,19 @@
     </div>
   </div>
 
-  <!-- ============ PHOTO LIGHTBOX ============ -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
     <img id="lightboxImg" src="" alt="Full size photo">
   </div>
 
 <script>
+  /* =========================================================
+     0. DISABLE BROWSER SCROLL RESTORATION
+     ========================================================= */
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
   /* =========================================================
      1. FLOATING HEARTS BACKGROUND
      ========================================================= */
@@ -1251,6 +1214,16 @@
   let typewriterRunId = 0;
   let petalsInterval = null;
 
+  /* Helper: force the text column (and window) back to the top */
+  function resetScrollToTop() {
+    // Reset the scrollable column
+    if (colText) colText.scrollTop = 0;
+    // Some browsers scroll the window/viewport instead
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   envelope.addEventListener('click', () => {
     if (opened) return;
     opened = true;
@@ -1269,7 +1242,12 @@
       stage.style.visibility = 'hidden';
       letterViewport.classList.add('show');
 
+      // Force scroll to the top the moment the viewport becomes visible
+      resetScrollToTop();
+
       setTimeout(() => {
+        // And again right before the typewriter starts, after layout settles
+        resetScrollToTop();
         startTypewriter();
         startPetals();
       }, 500);
@@ -1307,7 +1285,8 @@
       document.getElementById('hiddenMsg').classList.remove('show');
       document.getElementById('loveBtn').childNodes[0].nodeValue = 'Tap me ';
 
-      colText.scrollTop = 0;
+      // Reset scroll AFTER clearing the text, so content shrinks first
+      resetScrollToTop();
 
       envelope.classList.remove('open', 'expanding', 'gone');
 
@@ -1347,6 +1326,9 @@
   async function startTypewriter() {
     const runId = ++typewriterRunId;
     const paras = document.querySelectorAll('.body-text');
+
+    // Ensure we start at the top on every run
+    resetScrollToTop();
 
     for (const p of paras) {
       const txt = p.dataset.text || '';
